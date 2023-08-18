@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTin.Logging", "iTin.Logging.csproj", "{D02C416A-A7E6-4C21-B6A4-1C5C009D1BCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTin.Logging", "src\iTin.Logging.csproj", "{1B590066-1459-4B3C-871A-0F8177191DDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D02C416A-A7E6-4C21-B6A4-1C5C009D1BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D02C416A-A7E6-4C21-B6A4-1C5C009D1BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D02C416A-A7E6-4C21-B6A4-1C5C009D1BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D02C416A-A7E6-4C21-B6A4-1C5C009D1BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B590066-1459-4B3C-871A-0F8177191DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B590066-1459-4B3C-871A-0F8177191DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B590066-1459-4B3C-871A-0F8177191DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B590066-1459-4B3C-871A-0F8177191DDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

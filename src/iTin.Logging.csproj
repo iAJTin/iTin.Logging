@@ -7,7 +7,7 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Version>1.0.0.3</Version>
 		<Description>Logging library</Description>
-		<Copyright>Copyright © 2022</Copyright>
+		<Copyright>Copyright © 2023</Copyright>
 		<PackageProjectUrl></PackageProjectUrl>
 		<PackageId>iTin.Logging</PackageId>
 		<Company>iTin</Company>
