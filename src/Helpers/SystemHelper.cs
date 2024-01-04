@@ -16,7 +16,7 @@ public static class SystemHelper
     /// <param name="arguments">Program arguments</param>
     public static void RunProgram(string program, string arguments)
     {
-        ProcessStartInfo startInfo = new ProcessStartInfo(program, arguments) { UseShellExecute = true };
+        var startInfo = new ProcessStartInfo(program, arguments) { UseShellExecute = true };
         using (Process.Start(startInfo))
         {
         }

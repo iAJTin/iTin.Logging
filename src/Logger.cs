@@ -52,7 +52,7 @@ public class Logger : ILogger
     /// Initializes a new instance of the <see cref="Logger"/> class.
     /// </summary>
     /// <param name="caller">The caller file path reference.</param>
-    public Logger([CallerFilePath] string caller = "") : this("Unknown", new ILog[]{}, caller)
+    public Logger([CallerFilePath] string caller = "") : this("Unknown", [], caller)
     {
     }
 
@@ -69,7 +69,7 @@ public class Logger : ILogger
         ApplicationName = applicationName;
         Deep = LogDeep.OnlyApplicationCalls;
 
-        writers = writers ?? new ILog[] { };
+        writers = writers ?? [];
         foreach (ILog item in writers)
         {
             if (item is FileLog itemsAsFileLog)
@@ -85,13 +85,13 @@ public class Logger : ILogger
 
     #endregion
 
-    #region public static properties
+    #region public static readonly properties
 
     /// <summary>
     /// Gets or sets the logger instance.
     /// </summary>
     /// <value>
-    /// An Logger object which is the logger instance.
+    /// A Logger object which is the logger instance.
     /// </value>
     public static ILogger Instance => _instance;
 
@@ -130,7 +130,7 @@ public class Logger : ILogger
     /// Gets the collection of Log Writers that are used to log the Application events.
     /// </summary>
     /// <value>
-    /// An <b>IList</b>&lt;<see cref="ILog"/>&gt; collection of Log Writers.
+    /// An <strong>IList</strong>&lt;<see cref="ILog"/>&gt; collection of Log Writers.
     /// </value>
     public IList<ILog> Logs
     {
@@ -151,7 +151,7 @@ public class Logger : ILogger
     #region public methods
 
     /// <summary>
-    /// Shows <b>Debug</b> message for all registered loggers.
+    /// Shows <strong>Debug</strong> message for all registered loggers.
     /// </summary>
     /// <param name="message">A string that contains the message to be logged.</param>
     /// <param name="filePath">File path of caller</param>
@@ -160,7 +160,7 @@ public class Logger : ILogger
     public void Debug(string message, [CallerFilePath] string filePath = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0) => Log(message, LogLevel.Debug, 0, filePath, memberName, lineNumber);
 
     /// <summary>
-    /// Shows <b>Error</b> message for all registered loggers.
+    /// Shows <strong>Error</strong> message for all registered loggers.
     /// </summary>
     /// <param name="message">A string that contains the message to be logged.</param>
     /// <param name="exception">An exception that contains the message to be logged.</param>
@@ -170,7 +170,7 @@ public class Logger : ILogger
     public void Error(string message, Exception exception, [CallerFilePath] string filePath = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0) => LogException(message, LogLevel.Error, 0, exception, filePath, memberName, lineNumber);
 
     /// <summary>
-    /// Shows <b>Fatal</b> message for all registered loggers.
+    /// Shows <strong>Fatal</strong> message for all registered loggers.
     /// </summary>
     /// <param name="message">A string that contains the message to be logged.</param>
     /// <param name="filePath">File path of caller</param>
@@ -179,7 +179,7 @@ public class Logger : ILogger
     public void Fatal(string message, [CallerFilePath] string filePath = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0) => Log(message, LogLevel.Fatal, 0, filePath, memberName, lineNumber);
 
     /// <summary>
-    /// Shows <b>Info</b> message for all registered loggers.
+    /// Shows <strong>Info</strong> message for all registered loggers.
     /// </summary>
     /// <param name="message">A string that contains the message to be logged.</param>
     /// <param name="filePath">File path of caller</param>
@@ -188,7 +188,7 @@ public class Logger : ILogger
     public void Info(string message, [CallerFilePath] string filePath = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int lineNumber = 0) => Log(message, LogLevel.Info, 0, filePath, memberName, lineNumber);
 
     /// <summary>
-    /// Shows <b>Warn</b> message for all registered loggers.
+    /// Shows <strong>Warn</strong> message for all registered loggers.
     /// </summary>
     /// <param name="message">A string that contains the message to be logged.</param>
     /// <param name="filePath">File path of caller</param>
@@ -257,9 +257,9 @@ public class Logger : ILogger
             return;
         }
 
-        bool belongsApp = filePath.ToLowerInvariant().Contains(RootDirectory.ToLowerInvariant());
+        var belongsApp = filePath.ToLowerInvariant().Contains(RootDirectory.ToLowerInvariant());
 
-        bool canLog = false;
+        var canLog = false;
         switch (Deep)
         {
             case LogDeep.AnyCall:
@@ -288,7 +288,7 @@ public class Logger : ILogger
             return;
         }
 
-        foreach (ILog logWriter in Logs)
+        foreach (var logWriter in Logs)
         {
             logWriter.WriteEntry(
                 message,
@@ -323,7 +323,7 @@ public class Logger : ILogger
         //    return;
         //}
 
-        foreach (ILog logWriter in Logs)
+        foreach (var logWriter in Logs)
         {
             logWriter.WriteExceptionEntry(message, level, eventId, exception, new CallerData { ApplicationName = ApplicationName, CallerFilePath = filePath, CallerMemberName = memberName, CallerLineNumber = lineNumber });
         }
